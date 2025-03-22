@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      BerkasIndex.belongsTo(models.Berkas, {
+        foreignKey: 'no_sep',
+        targetKey: 'no_sep',
+        as: 'berkas'
+      });
     }
   }
   BerkasIndex.init({

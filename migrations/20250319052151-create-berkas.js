@@ -22,6 +22,12 @@ module.exports = {
       kd_dr: {
         type: Sequelize.STRING
       },
+      nm_pasien: {
+        type: Sequelize.STRING
+      },
+      no_rm: {
+        type: Sequelize.STRING
+      },
       tanggal_masuk: {
         type: Sequelize.DATEONLY
       },

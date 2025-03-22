@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     no_sep: DataTypes.STRING,
     status: DataTypes.ENUM('ralan', 'ranap'),
     kd_dr: DataTypes.STRING,
+    nm_pasien: DataTypes.STRING,
+    no_rm: DataTypes.STRING,
     tanggal_masuk: DataTypes.DATEONLY,
     tanggal_keluar: DataTypes.DATEONLY
   }, {
