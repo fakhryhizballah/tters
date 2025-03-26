@@ -1,30 +1,41 @@
-const fs = require('fs');
+const express = require('express');
+const morgan = require('morgan');
 const path = require('path');
+const app = express();
+require('dotenv').config();
+const {
+    PORT = 8080
+} = process.env;
 
-let dir = "/Volumes/CASEMIX/@CASEMIX 2024/FILE FINAL/2025";
+app.use(morgan('dev'));
+app.use(express.json());
+
+app.enable('trust proxy');
 
 
-async function getFiles(dir) {
-    fs.readdir(dir, { withFileTypes: true }, (err, files) => {
-        if (err) {
-            console.log(err);
-        } else {
-            // console.log(files);
-            files.forEach(file => {
-                // console.log(path.extname(file.name));
-                // if (path.extname(file.name) === '.pdf') {
-                //     // console.log(`PDF: ${file.name}`);
-                    
-                // }
-                if (file.isDirectory()) {
-                    // console.log(`Directory: ${file.name}`);
-                    getFiles(file.parentPath+'/' +file.name);
-                } else {
-                    console.log(`File: ${file.name}`);
-                }
-            });
-        }
+app.use("/assets/", express.static(path.join(__dirname + "/public/"), {
+    // setHeaders: (res, path, stat) => {
+    //     res.set('Cache-Control', 'public, max-age=180');
+    // }
+}));
+app.use("/dir/", express.static(path.join("/"), {
+    // setHeaders: (res, path, stat) => {
+    //     res.set('Cache-Control', 'public, max-age=180');
+    // }
+}));
+
+const routes = require('./routes');
+app.use('/', routes);
+
+app.use(function (err, req, res, next) {
+    res.status(500).json({
+        status: false,
+        message: err.message,
+        data: null
     });
-}
+});
 
-getFiles(dir);
+app.listen(PORT, () => {
+    console.log('listening on port', PORT);
+
+});
