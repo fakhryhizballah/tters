@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/assets/css/styles.css" rel="stylesheet">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-no-repeat bg-center bg-cover" style="background-image:url(/assets/img/hospital-units.jpg)">
+    <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-center text-gray-700">Login Digital Signature Smart Klaim</h2>
+        <form >
+            <div>
+                <label class="block text-sm font-medium text-gray-600">Nomor Whatsapp</label>
+                <div class="flex">
+                    <input type="number" id="nomorWa" class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Masukkan nomor Whatsapp">
+                    <button onclick="kirimOTP()" type="button" class="px-4 py-2 mt-2 ml-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600">Kirim</button>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-600">One-Time Password</label>
+                <input type="number" id="otp" class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Masukkan OTP">
+            </div>
+            <button onclick="login()" class="w-full px-4 py-2 mt-6 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600">Login</button>
+        </form>
+        <p class="text-sm text-center text-gray-600">Belum punya akun? <a href="#" class="text-blue-500 hover:underline">Hubungi IT</a></p>
+    </div>
+    <script src="/assets/js/modules/sweetalert2.min.js"></script>
+    <script src="/assets/js/login.js"></script>
+</body>
+</html>
